@@ -1,9 +1,9 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("1Cube");
+  const [activeTab, setActiveTab] = useState('1Cube');
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -19,19 +19,19 @@ const Header: React.FC = () => {
           <Link href="/">
             <button
               className={`px-4 py-2 rounded ${
-                activeTab === "1Cube" ? "bg-blue-500" : "bg-gray-700"
+                activeTab === '1Cube' ? 'bg-blue-500' : 'bg-gray-700'
               }`}
-              onClick={() => handleTabClick("1Cube")}
+              onClick={() => handleTabClick('1Cube')}
             >
               1Cube
             </button>
           </Link>
-          <Link href="/2">
+          <Link href="/cubeCss">
             <button
               className={`px-4 py-2 rounded ${
-                activeTab === "2Cube" ? "bg-blue-500" : "bg-gray-700"
+                activeTab === '2Cube' ? 'bg-blue-500' : 'bg-gray-700'
               }`}
-              onClick={() => handleTabClick("2Cube")}
+              onClick={() => handleTabClick('2Cube')}
             >
               2Cube
             </button>
@@ -39,9 +39,9 @@ const Header: React.FC = () => {
           <Link href="/3">
             <button
               className={`px-4 py-2 rounded ${
-                activeTab === "3Cube" ? "bg-blue-500" : "bg-gray-700"
+                activeTab === '3Cube' ? 'bg-blue-500' : 'bg-gray-700'
               }`}
-              onClick={() => handleTabClick("3Cube")}
+              onClick={() => handleTabClick('3Cube')}
             >
               3Cube
             </button>
