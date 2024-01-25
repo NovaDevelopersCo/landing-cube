@@ -7,7 +7,7 @@ interface NumberProps {
 
 export const Buttons = ({ setRotateXCube, setRotateYCube }: NumberProps) => {
   return (
-    <div className="buttons">
+    <div className="flex justify-center gap-5">
       {faces.length > 0 &&
         faces.map((face) => (
           <button

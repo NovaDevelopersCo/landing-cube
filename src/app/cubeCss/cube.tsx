@@ -30,10 +30,13 @@ export const Cube = () => {
   const debouncedScroll = useMemo(() => debounce(handleWheel, 150), []);
 
   return (
-    <main className="main" onWheel={debouncedScroll}>
-      <div className="container">
+    <main
+      onWheel={debouncedScroll}
+      className="flex items-center justify-center min-h-[90vh] bg-gray-700 text-white"
+    >
+      <div className="perspective w-[500px] h-[500px]">
         <div
-          className="cube"
+          className="relative w-full h-full preserve-3d transition-all duration-1000 ease-in-out"
           style={{
             transform: `rotateX(${rotateXCube}deg) rotateY(${rotateYCube}deg)`,
           }}
@@ -41,7 +44,7 @@ export const Cube = () => {
           {faces.map((face, index) => (
             <div
               key={index}
-              className={`face ${face.position} flex flex-col justify-center`}
+              className={`absolute overflow-hidden w-[var(--cubeSize)] h-[var(--cubeSize)] font-size-5 bg-gray-800 p-5 ${face.position} flex flex-col justify-center`}
             >
               <Buttons
                 setRotateXCube={setRotateXCube}
@@ -51,7 +54,7 @@ export const Cube = () => {
               <div className="w-full flex-1 my-5">
                 <About />
               </div>
-              {index}
+              {index + 1}
             </div>
           ))}
         </div>
