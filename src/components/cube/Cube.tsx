@@ -1,10 +1,12 @@
 'use client';
-import React from 'react';
-import { useMemo, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { faces } from './constants';
 import debounce from 'debounce';
-import { Buttons } from './buttons';
-import { About } from './about';
+import { Buttons } from './Buttons';
+import { About } from './About';
+import ServiceBlock from './ServiceBlock/ServiceBlock';
+import { Hero } from './Hero';
 
 export const Cube = () => {
   const [rotateXCube, setRotateXCube] = useState(0);
@@ -12,11 +14,10 @@ export const Cube = () => {
   const [activeFace, setActiveFace] = useState(0);
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    const length = faces.length;
     setActiveFace((prevActiveFace) =>
       e.deltaY > 0
-        ? (prevActiveFace + 1) % length
-        : (prevActiveFace - 1 + length) % length
+        ? (prevActiveFace + 1) % faces.length
+        : (prevActiveFace - 1 + faces.length) % faces.length
     );
   };
 
@@ -27,14 +28,14 @@ export const Cube = () => {
 
   console.log('render');
 
-  const debouncedScroll = useMemo(() => debounce(handleWheel, 150), []);
+  const debouncedScroll = debounce(handleWheel, 150);
 
   return (
     <main
       onWheel={debouncedScroll}
-      className="flex items-center justify-center min-h-[90vh] bg-gray-700 text-white"
+      className="flex items-center justify-center min-h-screen bg-gray-700 text-white"
     >
-      <div className="perspective w-[500px] h-[500px]">
+      <div className="perspective w-[var(--cubeSize)] h-[var(--cubeSize)]">
         <div
           className="relative w-full h-full preserve-3d transition-all duration-1000 ease-in-out"
           style={{
@@ -44,15 +45,19 @@ export const Cube = () => {
           {faces.map((face, index) => (
             <div
               key={index}
-              className={`absolute overflow-hidden w-[var(--cubeSize)] h-[var(--cubeSize)] font-size-5 bg-gray-800 p-5 ${face.position} flex flex-col justify-center`}
+              className={`absolute w-[var(--cubeSize)] h-[var(--cubeSize)] font-size-5 bg-gray-800 p-5 ${face.position} flex flex-col justify-center`}
             >
               <Buttons
                 setRotateXCube={setRotateXCube}
                 setRotateYCube={setRotateYCube}
               />
-              <div className="w-full"></div>
-              <div className="w-full flex-1 my-5">
-                <About />
+              <div className="overflow-hidden w-full  flex-1 my-5">
+                {face.section === 'Home' ? <Hero /> : null}
+                {face.section === 'About' ? <About /> : null}
+                {face.section === 'Services' ? <ServiceBlock /> : null}
+                {face.section === 'Contact' ? 'Contact' : null}
+                {face.section === 'Teams' ? 'Teams' : null}
+                {face.section === 'Projects' ? 'Projects' : null}
               </div>
               {index + 1}
             </div>

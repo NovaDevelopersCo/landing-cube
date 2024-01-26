@@ -3,7 +3,7 @@ import Image from 'next/image';
 export const About = () => {
   return (
     <div className="flex flex-col items-center text-center">
-      <h2 className="text-xl font-semibold">Our History</h2>
+      <h2 className="text-2xl font-semibold">Our History</h2>
       <Image
         className="rounded-md"
         width={300}

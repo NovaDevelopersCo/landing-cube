@@ -1,4 +1,4 @@
-import { Cube } from './cube';
+import { Cube } from '../../components/cube/Cube';
 
 const CubePage = () => {
   return <Cube />;
