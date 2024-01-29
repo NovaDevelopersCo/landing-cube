@@ -7,6 +7,7 @@ import { Buttons } from './Buttons';
 import { About } from './About';
 import ServiceBlock from './ServiceBlock/ServiceBlock';
 import { Hero } from './Hero';
+import { Team } from './Team';
 
 export const Cube = () => {
   const [rotateXCube, setRotateXCube] = useState(0);
@@ -56,7 +57,7 @@ export const Cube = () => {
                 {face.section === 'About' ? <About /> : null}
                 {face.section === 'Services' ? <ServiceBlock /> : null}
                 {face.section === 'Contact' ? 'Contact' : null}
-                {face.section === 'Teams' ? 'Teams' : null}
+                {face.section === 'Team' ? <Team /> : null}
                 {face.section === 'Projects' ? 'Projects' : null}
               </div>
               {index + 1}
