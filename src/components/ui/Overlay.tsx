@@ -72,7 +72,7 @@ export const Overlay = () => {
             🤙 Call me maybe?
           </h1>
           <p className="text-gray-500">
-            I'm very expensive but you won't regret it
+            Im very expensive but you wont regret it
           </p>
           <p className="mt-6 p-3 bg-slate-200 rounded-lg">
             📞 <a href="tel:(+42) 4242-4242-424242">(+42) 4242-4242-424242</a>
